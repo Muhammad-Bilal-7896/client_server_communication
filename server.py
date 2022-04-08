@@ -14,6 +14,7 @@ local_ip_address = socket.gethostbyname(socket.gethostname())
 server = StreamingServer(local_ip_address,9999)
 receiver = AudioReceiver(local_ip_address,8888)
 
+
 def start_listening():
     t1 = threading.Thread(target=server.start_server)
     t2 = threading.Thread(target=receiver.start_server)
@@ -35,13 +36,17 @@ def start_audio_stream():
     t5 = threading.Thread(target=audio_sender.start_stream)
     t5.start()
 
+#Will start working on this
+def start_control():
+    pass
+
 ############################ Functionality ########################
 
 # server = StreamingServer('192.168.0.207',9999)
 
 ############################# GUI PART #############################
 window = tk.Tk()
-window.title("Client/Server Meeting Software")
+window.title("Server Part")
 window.geometry('300x200')
 
 # adding elements to window

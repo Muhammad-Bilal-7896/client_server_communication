@@ -41,7 +41,7 @@ def start_audio_stream():
 
 ############################# GUI PART #############################
 window = tk.Tk()
-window.title("Client/Server Meeting Software")
+window.title("Client Part")
 window.geometry('300x200')
 
 # adding elements to window
