@@ -5,6 +5,13 @@
 import pyautogui as pg
 import socket
 
+from click import command
+from flask import request
+from vidstream import *
+import tkinter as tk
+import socket 
+import threading
+
 #Lets implement console part in GUI
 window = tk.Tk()
 window.title("Client Part")
@@ -82,12 +89,6 @@ def screen_control():
 
 # This is for the client
 
-from click import command
-from flask import request
-from vidstream import *
-import tkinter as tk
-import socket 
-import threading
 
 local_ip_address = socket.gethostbyname(socket.gethostname())
 
