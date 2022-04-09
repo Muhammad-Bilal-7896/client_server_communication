@@ -95,7 +95,7 @@ window.title("Client Part")
 window.geometry('300x200')
 
 # adding elements to window
-label_target_ip = tk.Label(window,text="Target IP:")
+label_target_ip = tk.Label(window,text="Enter the Server IP Address here to start the connection:")
 label_target_ip.pack()
 
 text_target_ip = tk.Text(window,height=1)
@@ -113,8 +113,8 @@ btn_screen.pack(anchor=tk.CENTER,expand=True)
 btn_audio = tk.Button(window,text="Start Audio Stream",width=50,command=start_audio_stream)
 btn_audio.pack(anchor=tk.CENTER,expand=True)
 
-btn_control = tk.Button(window,text="Start Screen Control",width=50,command=start_audio_stream)
-btn_control.pack(anchor=tk.CENTER,expand=True)
+# btn_control = tk.Button(window,text="Start Screen Control",width=50,command=screen_control)
+# btn_control.pack(anchor=tk.CENTER,expand=True)
 
 window.mainloop() 
 

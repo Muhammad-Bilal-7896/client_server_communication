@@ -3,73 +3,75 @@
 ######################################### For Control #########################################
 #!/usr/bin/env python
 # Server.py of 'Remote Desktop'
-import socket # For network connections
-import tkinter as tk # To create a graphical user interface
-from tkinter.messagebox import showinfo # To give alerts
-from random import randint # To pick a random number
+# import socket # For network connections
+# import tkinter as tk # To create a graphical user interface
+# from tkinter.messagebox import showinfo # To give alerts
+# from random import randint # To pick a random number
 
-def type_box():
-    tp_fr = tk.Tk()
-    tp_fr.title('Python Remote Keyboard')
-    bx_txt = tk.Entry(tp_fr, width=100)
-    bx_txt.pack()
-    send_but =tk.Button(tp_fr, text="Type Text", command=lambda:conn.send(('cde:'+bx_txt.get()).encode()))
-    del_but =tk.Button(tp_fr, text="Delete", command=lambda:conn.send(('del'.encode())))
-    nl_but =tk.Button(tp_fr, text="Enter", command=lambda:conn.send(('nl'.encode())))
-    del_but.pack()
-    send_but.pack()
-    nl_but.pack()
-    tp_fr.mainloop()
+# def type_box():
+#     tp_fr = tk.Tk()
+#     tp_fr.title('Python Remote Keyboard')
+#     bx_txt = tk.Entry(tp_fr, width=100)
+#     bx_txt.pack()
+#     send_but =tk.Button(tp_fr, text="Type Text", command=lambda:conn.send(('cde:'+bx_txt.get()).encode()))
+#     del_but =tk.Button(tp_fr, text="Delete", command=lambda:conn.send(('del'.encode())))
+#     nl_but =tk.Button(tp_fr, text="Enter", command=lambda:conn.send(('nl'.encode())))
+#     del_but.pack()
+#     send_but.pack()
+#     nl_but.pack()
+#     tp_fr.mainloop()
+
+# def motion(event):
+#     x, y = event.x, event.y
+#     data = conn.recv(1024).decode()
+#     data = str(x*2)+' '+str(y*2)
+#     conn.send(data.encode())
+
+# port = randint(1000, 10000)
+# k = tk.Tk()
+# showinfo('Control Data','Host = '+socket.gethostbyname(socket.gethostname())+'\nPort = '+str(port))
+# k.destroy()
+# root = tk.Tk()
+# root.title('Python Remote Trackpad')
+# root.geometry('960x540')
+# global x, y, data
+# host = socket.gethostname()
+
+# server_socket = socket.socket()
+# server_socket.bind((host, port))
+# server_socket.listen(2)
+# conn, address = server_socket.accept()
+# print("Connection from: " + str(address))
 
 
-def motion(event):
-    x, y = event.x, event.y
-    data = conn.recv(1024).decode()
-    data = str(x*2)+' '+str(y*2)
-    conn.send(data.encode())
+# def a(o):
+#     conn.send('c'.encode())
+#     print("Click button pressed")
+# def r(o):
+#     conn.send('r'.encode())
+#     print("Right Click Pressed")
+# def d(o):
+#     conn.send('d'.encode())
 
 
-def a(o):
-    conn.send('c'.encode())
-    print("Click button pressed")
-def r(o):
-    conn.send('r'.encode())
-    print("Right Click Pressed")
-def d(o):
-    conn.send('d'.encode())
+# def screen_control():
+#     #This is the main code starting from here    
+#     x = 10
+#     y = 10
 
-def screen_control():
-    #This is the main code starting from here    
-    port = randint(1000, 10000)
-    k = tk.Tk()
-    showinfo('Control Data','Host = '+socket.gethostbyname(socket.gethostname())+'\nPort = '+str(port))
-    k.destroy()
-    root = tk.Tk()
-    root.title('Python Remote Trackpad')
-    root.geometry('960x540')
-    global x, y, data
-    host = socket.gethostname()
+#     root.bind('<Motion>', motion)
+#     print(10)
+#     cde = ''
+    
+#     root.bind('<Control-l>', a)
+#     root.bind('<Control-r>', r)
+#     root.bind('<Control-d>', d)
+#     menubar = tk.Menu(root)
+#     menubar.add_command(label="Type", command=type_box)
+#     root.config(menu = menubar)
 
-    server_socket = socket.socket()
-    server_socket.bind((host, port))
-    server_socket.listen(2)
-    conn, address = server_socket.accept()
-    print("Connection from: " + str(address))
-    x = 10
-    y = 10
-
-    root.bind('<Motion>', motion)
-    print(10)
-    cde = ''
-
-    root.bind('<Control-l>', a)
-    root.bind('<Control-r>', r)
-    root.bind('<Control-d>', d)
-    menubar = tk.Menu(root)
-    menubar.add_command(label="Type", command=type_box)
-    root.config(menu = menubar)
-
-    root.mainloop()
+#     root.mainloop()
+        
 
 ######################################### For Control #########################################
 
@@ -109,10 +111,6 @@ def start_audio_stream():
     t5 = threading.Thread(target=audio_sender.start_stream)
     t5.start()
 
-#Will start working on this
-def start_control():
-    pass
-
 ############################ Functionality ########################
 
 # server = StreamingServer('192.168.0.207',9999)
@@ -123,10 +121,10 @@ window.title("Server Part")
 window.geometry('300x200')
 
 # adding elements to window
-label_target_ip = tk.Label(window,text="Target IP:")
+label_target_ip = tk.Label(window,text="Server IP Address:")
 label_target_ip.pack()
 
-text_target_ip = tk.Text(window,height=1)
+text_target_ip = tk.Label(window,text=local_ip_address)
 text_target_ip.pack()
 
 btn_listen = tk.Button(window,text="Start Listening",width=50,command=start_listening)
@@ -141,8 +139,8 @@ btn_screen.pack(anchor=tk.CENTER,expand=True)
 btn_audio = tk.Button(window,text="Start Audio Stream",width=50,command=start_audio_stream)
 btn_audio.pack(anchor=tk.CENTER,expand=True)
 
-btn_control = tk.Button(window,text="Start Screen Control",width=50,command=screen_control)
-btn_control.pack(anchor=tk.CENTER,expand=True)
+# btn_control = tk.Button(window,text="Start Screen Control",width=50,command=screen_control)
+# btn_control.pack(anchor=tk.CENTER,expand=True)
 
 window.mainloop() 
 
