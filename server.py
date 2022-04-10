@@ -65,7 +65,7 @@ cde = ''
 root.bind('<Control-l>', a)
 root.bind('<Control-r>', r)
 root.bind('<Control-d>', d)
-#To exit the first window
+#To exit the first
 root.bind('<Control-e>', exit)
 menubar = tk.Menu(root)
 menubar.add_command(label="Type", command=type_box)
@@ -80,7 +80,19 @@ def screen_control():
 
 ######################################### For Control #########################################
 
+from click import command
+from flask import request
+from vidstream import *
+import tkinter as tk
+import socket 
+import threading
 
+local_ip_address = socket.gethostbyname(socket.gethostname())
+
+############################ Functionality ########################
+
+server = StreamingServer(local_ip_address,9999)
+receiver = AudioReceiver(local_ip_address,8888)
 
 
 def start_listening():
@@ -141,5 +153,3 @@ btn_audio.pack(anchor=tk.CENTER,expand=True)
 window.mainloop() 
 
 ############################# GUI PART #############################
-
-

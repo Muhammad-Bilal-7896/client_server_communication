@@ -98,7 +98,10 @@ def chal_aakhri_chal():
 
     window.mainloop() 
 
-while True:
+client_socket.send(message.encode())  # send message
+data = client_socket.recv(1024).decode()  # receive response
+
+while data != 'exit':
     try:
         while message.lower().strip() != 'bye':
             client_socket.send(message.encode())  # send message
@@ -116,8 +119,9 @@ while True:
             elif data=='nl':
                 pg.typewrite(['enter'])
             elif data == 'exit':
-                chal_aakhri_chal()
                 print("Chal raha hai chal raha hai aakhri")
+                chal_aakhri_chal()
+                break
             else:
                 x = int(data.split(' ')[0])
                 y = int(data.split(' ')[1])
@@ -127,6 +131,9 @@ while True:
         client_socket.close()  # close the connection
     except:
         pass
+        chal_aakhri_chal()    
+
+chal_aakhri_chal()
 
 def screen_control():
     pass
