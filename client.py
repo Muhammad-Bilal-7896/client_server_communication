@@ -44,6 +44,9 @@ window = tk.Tk()
 window.title("Client/Server Meeting Software")
 window.geometry('500x200')
 
+#set window color
+window.configure(bg='yellow')
+
 # adding elements to window
 label_target_ip = tk.Label(window,text="Target IP:")
 label_target_ip.pack()

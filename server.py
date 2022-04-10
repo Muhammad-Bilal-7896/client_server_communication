@@ -42,6 +42,9 @@ window = tk.Tk()
 window.title("Server Meeting Part of Software")
 window.geometry('300x200')
 
+#set window color
+window.configure(bg='green')
+
 # adding elements to window
 label_target_ip = tk.Label(window,text="The Server IP Address is equal to :")
 label_target_ip.pack()
