@@ -42,7 +42,7 @@ def start_audio_stream():
 ############################# GUI PART #############################
 window = tk.Tk()
 window.title("Client/Server Meeting Software")
-window.geometry('300x200')
+window.geometry('500x200')
 
 # adding elements to window
 label_target_ip = tk.Label(window,text="Target IP:")
